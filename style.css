@@ -1,0 +1,194 @@
+ body{font-family: 'Amiri', serif; 
+    background:#ffffff;
+     padding:20px;
+overflow-x : hidden;}
+
+    .paper{width:95%;
+     max-width: 1000px;
+         margin:20px auto;
+          background:#f0cced; 
+          padding:20px;
+          box-sizing: border-box;
+           box-shadow:0 0 0 3px ,
+            0 2px 6px rgba(0,0,0,0.06);
+             border:3px solid #2b2b2b}
+    h1.title{font-size:26px;
+         margin:0 0 18px 0;
+          text-align:center}
+    .header{display:flex;
+         justify-content:space-between;
+          align-items:center;
+           margin-bottom:12px}
+    .field{border:2px solid #2b2b2b;
+         padding:8px 12px;
+          min-width:170px; 
+          text-align:center}
+    .top-row{display:flex;
+         gap:12px; 
+          justify-content:flex-start;}
+          /* تنسيق الجدول ليكون متجاوباً */
+.form-table, .form-table2 {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+.form-table2 th, .form-table2 td{border:2px solid #2b2b2b;
+         padding:8px; 
+         text-align:center; 
+         vertical-align:middle}
+    .form-table th, .form-table td{border:2px solid #2b2b2b;
+         padding:8px; 
+         text-align:center; 
+         vertical-align:middle}
+    .wide{width:20%}
+    .narrow{width:14%}
+    .right-box{border:4px solid #2b2b2b;
+         padding:14px;
+          text-align:center;
+          font-size:20px;
+       
+ }
+    .signature{display:flex;
+         justify-content:space-between;
+          margin-top:100px}
+    .sig-box{border-top:2px solid #2b2b2b; 
+        width:40%;
+         padding-top:12px; 
+         text-align:center}
+         .sig-box-top{border-top:2px solid #2b2b2b; 
+        width:40%;
+         padding-top:12px; 
+         text-align:center;
+         margin-top: -38px;
+        }
+    .muted{position: relative;
+     font-size:12px; 
+        color:#444 ;
+        margin-top: 20px;
+     direction: rtl;}
+     #month-name, #year-number {
+    position: absolute;
+    bottom: 5px;       /* يرفع النص قليلاً فوق الشرطة */
+    right: 17px;       /* يحرك النص ليكون فوق منطقة الشرطات (عدل الرقم حسب الخط) */
+    width: 100px;      /* عرض منطقة النص فوق الشرطة */
+    text-align: center; /* يضع النص في منتصف هذه المنطقة */
+    color: #8b3d88;    /* لون النص (بنفسجي غامق مثل الصورة) */
+    font-weight: bold;
+    pointer-events: none; /* لضمان عدم تداخل النص مع الضغط */
+}
+    /* Handwritten-like accents */
+    .hand{font-family: 'Amiri', serif;}
+    .header-container { display: flex;
+         flex-direction: row;
+          align-items: flex-end; 
+          gap: 15px;
+           direction: rtl; 
+           font-family: Arial, sans-serif; 
+           padding: 10px; }
+     .fields-wrapper { display: flex;
+         flex-direction: row; 
+         gap: 15px; 
+         flex-wrap: wrap;
+        align-items: end;
+     justify-content: space-between; }
+      .input-group { display: flex; 
+        flex-direction: column; 
+        gap: 6px; }
+       .label { font-size: 0.8pc; 
+        font-weight: bold;
+         color: #555; } 
+          .labe2 {display: flex; 
+            justify-content: space-between;
+            font-size: 0.8pc; 
+        font-weight: bold;
+         color: #555; } 
+       .field { border: 1px solid #ccc;
+         padding: 6px 12px;
+          min-width: 158px;
+           background-color: #f9f9f9;
+            border-radius: 4px; 
+            text-align: center;
+             font-size: 13px;
+              text-align: center; }
+             .field-m { border: 1px solid #ccc;
+         padding: 6px 12px;
+         max-width: 118px;
+           background-color: #f9f9f9;
+            border-radius: 4px; 
+            text-align: center;
+             font-size: 13px; }
+        .footer-row { white-space: nowrap;
+             margin-bottom: 5px; 
+             color: #888;}
+#input1,#input2,#input3{
+     max-width: 115px;
+     margin-left: 30px;
+}
+.day-error ,.time-error ,.trip-error{
+     visibility: hidden;
+}
+@media screen and (max-width: 768px) {
+    
+    /* جعل الهيدر صفوفاً عمودية */
+    .fields-wrapper {
+        flex-direction: column;
+       
+     
+    }
+     .input-group ,.input-group .field{width: 137%!important;}
+
+    /* تعديل الفوتر (الشهر والسنة) */
+    .footer-row {
+        flex-direction: row;
+        justify-content: space-around;
+        margin-bottom: 272px;    
+        margin-right: -212px;
+    }
+
+    /* تحويل المدخلات (عدد الأيام، الساعات) لصفوف عمودية */
+    div[style*="display:flex"] {
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+
+    /* أهم جزء: جعل الجدول قابلاً للتمرير أفقيًا إذا كان كبيرًا */
+    .form-table {
+        display: block;
+   max-width: 100%;
+       
+    }
+
+    /* تعديل الجزء السفلي (الجدول الصغير وصافي الراتب) */
+    div[style*="align-items:end"] {
+        flex-direction: row !important;
+        align-items: center !important;
+        text-wrap: nowrap;
+    width: 142%;}
+
+    .form-table2 {
+        width: 100%;
+    }
+
+    div[style*="width:300px"] {
+        width: 100% !important;
+        margin-top: 20px;
+    }
+
+    .right-box {
+      width: 27%;
+        text-align: center;
+           margin-top: 78px;
+    
+    
+    }
+    #net-salary {
+        font-size: 22px!important;
+    }
+    #input1,#input2,#input3 {min-width: 72%;
+text-align: center;}
+.input-group{text-align: center;}
+}
+
+#employeeIdInput{
+       text-align: center;
+}
