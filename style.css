@@ -3,7 +3,7 @@
      padding:20px;
 overflow-x : hidden;}
 
-    .paper{width:95%;
+    .paper{width:100%;
      max-width: 1000px;
          margin:20px auto;
           background:#f0cced; 
@@ -140,6 +140,7 @@ caption{
 }
 /* ------------------------------- */
 @media screen and (max-width: 575px) {
+    .paper{max-width: 575px;}
     .header-container {
         flex-direction: column;
         align-items: center;
@@ -152,7 +153,8 @@ caption{
         padding: 0 10px;
 }
 
-     .input-group ,.input-group .field{width: 100%!important;
+     .input-group ,.input-group .field{
+        width: 100%!important;
      margin: 5px 0;
      align-items: center;}
 
