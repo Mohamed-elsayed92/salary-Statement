@@ -60,12 +60,12 @@ document.getElementById('year-number').textContent = yearNumber;
 function calculateEgyptTax(monthlySalary) {
     // 1. الإعدادات الأساسية (سنوية)
     const annualGross = monthlySalary * 12;
-    const personalExemption = 20000; // الإعفاء الشخصي السنوي
     const inshuranceBasic = 6412.5;
     const monthlyInsurance = (inshuranceBasic / 1.1875  ) * 0.11;
     const annualInsurance = monthlyInsurance * 12;
+    const personalExemption = 20000; // الإعفاء الشخصي السنوي
     let taxableIncome = annualGross - annualInsurance - personalExemption;
-
+   
     // 4. نظام الشرائح (للدخول التي لا تتجاوز 600 ألف جنيه سنوياً)
     const brackets = [
         { limit: 40000, rate: 0.00 },  // الشريحة الأولى (معفاة)
@@ -88,8 +88,9 @@ function calculateEgyptTax(monthlySalary) {
     }
 const monthlyTax = totalAnnualTax / 12;
     return {
-    monthlyTax: monthlyTax,
+  monthlyTax: Math.max(0, monthlyTax),
         monthlyInsurance: monthlyInsurance,
+        taxableIncome: taxableIncome / 12 // الوعاء الشهري للعرض فقط
 
     };
 }
@@ -134,7 +135,8 @@ function updateUI() {
         const taxResults = calculateEgyptTax(grandTotal);
         if (elements.insurance) elements.insurance.innerText = taxResults.monthlyInsurance.toFixed(2);
         if (elements.tax) elements.tax.innerText = taxResults.monthlyTax.toFixed(2);
-        const  elshohada = (grandTotal -taxResults.monthlyInsurance ) * .0005;
+        let  elshohada = (grandTotal -taxResults.monthlyInsurance ) * .0005;
+        elshohada = Math.max(0, elshohada);
         const finalDeductions = totalDeductions + taxResults.monthlyInsurance + taxResults.monthlyTax + elshohada;
         
         if (elements.deductions) elements.deductions.innerText = finalDeductions.toFixed(2);
@@ -142,7 +144,7 @@ function updateUI() {
         if (elements.otherDedactions) elements.otherDedactions.innerText = elshohada.toFixed(2);
         if (elements.netSalary) elements.netSalary.innerText = (grandTotal - finalDeductions).toFixed(2);
     } else {
-        [elements.insurance, elements.tax,elshohada, elements.deductions, elements.netSalary].forEach(el => {
+        [elements.insurance, elements.tax, elements.deductions, elements.netSalary, elements.otherDedactions].forEach(el => {
             if (el) el.innerText = "0.00";
         });
     }

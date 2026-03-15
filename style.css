@@ -31,22 +31,27 @@ overflow-x : hidden;}
     width: 100%;
     border-collapse: collapse;
     margin-top: 15px;
+    table-layout: fixed;
 }
 .form-table2 th, .form-table2 td{border:2px solid #2b2b2b;
          padding:8px; 
          text-align:center; 
-         vertical-align:middle}
+         vertical-align:middle;
+         
+        }
     .form-table th, .form-table td{border:2px solid #2b2b2b;
          padding:8px; 
          text-align:center; 
-         vertical-align:middle}
+         vertical-align:middle;
+    height: 25px;
+}
     .wide{width:20%}
     .narrow{width:14%}
     .right-box{border:4px solid #2b2b2b;
          padding:14px;
           text-align:center;
           font-size:20px;
-       
+       width: 16%;
  }
     .signature{display:flex;
          justify-content:space-between;
@@ -84,12 +89,13 @@ overflow-x : hidden;}
           gap: 15px;
            direction: rtl; 
            font-family: Arial, sans-serif; 
-           padding: 10px; }
+           padding: 10px 0; 
+        margin: auto;}
      .fields-wrapper { display: flex;
          flex-direction: row; 
          gap: 15px; 
          flex-wrap: wrap;
-        align-items: end;
+        align-items:center;
      justify-content: space-between; }
       .input-group { display: flex; 
         flex-direction: column; 
@@ -122,27 +128,59 @@ overflow-x : hidden;}
              color: #888;}
 #input1,#input2,#input3{
      max-width: 115px;
-     margin-left: 30px;
+    
 }
 .day-error ,.time-error ,.trip-error{
      visibility: hidden;
 }
-@media screen and (max-width: 768px) {
-    
+caption{
+    font-size:18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+/* ------------------------------- */
+@media screen and (max-width: 575px) {
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+    width:90%;}
     /* جعل الهيدر صفوفاً عمودية */
     .fields-wrapper {
         flex-direction: column;
-       
-     
-    }
-     .input-group ,.input-group .field{width: 137%!important;}
+       display: flex;
+  flex-wrap: wrap;
+        padding: 0 10px;
+}
 
+     .input-group ,.input-group .field{width: 100%!important;
+     margin: 5px 0;
+     align-items: center;}
+
+.contener-table{width:100%;
+    
+    
+}
+    /* أهم جزء: جعل الجدول قابلاً للتمرير أفقيًا إذا كان كبيرًا */
+  .contener-table .form-table {
+display:table;
+table-layout: fixed;
+width: 100%;
+margin:0;
+font-size: 3vw;
+text-align: center;
+padding: 0;
+ vertical-align: middle; 
+ }
+
+.form-table th, .form-table td {
+    height: 25px;
+    
+}
     /* تعديل الفوتر (الشهر والسنة) */
     .footer-row {
-        flex-direction: row;
+        flex-direction: column;
         justify-content: space-around;
-        margin-bottom: 272px;    
-        margin-right: -212px;
+        margin-bottom: 10px;    
     }
 
     /* تحويل المدخلات (عدد الأيام، الساعات) لصفوف عمودية */
@@ -151,41 +189,48 @@ overflow-x : hidden;}
         gap: 20px !important;
     }
 
-    /* أهم جزء: جعل الجدول قابلاً للتمرير أفقيًا إذا كان كبيرًا */
-    .form-table {
-        display: block;
-   max-width: 100%;
-       
-    }
 
     /* تعديل الجزء السفلي (الجدول الصغير وصافي الراتب) */
     div[style*="align-items:end"] {
-        flex-direction: row !important;
+        flex-direction:row !important;
         align-items: center !important;
         text-wrap: nowrap;
-    width: 142%;}
+        gap:6px !important;
+    width:100% !important;
+font-size: 11px;}
 
-    .form-table2 {
+.form-table2 {
+    width: 70%;
+    display:table;
+    table-layout: fixed;}
+    
+    .form-table2 th, .form-table2 td {
         width: 100%;
+        text-wrap: auto;;
     }
-
-    div[style*="width:300px"] {
-        width: 100% !important;
-        margin-top: 20px;
-    }
-
-    .right-box {
-      width: 27%;
-        text-align: center;
-           margin-top: 78px;
     
     
-    }
-    #net-salary {
-        font-size: 22px!important;
-    }
-    #input1,#input2,#input3 {min-width: 72%;
-text-align: center;}
+ .right-box{border:2px solid #2b2b2b;
+         padding:5px;
+          text-align:center;
+          font-size:3vw;
+       box-sizing: border-box;
+      align-self: self-end;
+     width: 26% !important;  
+    align-items: center;}
+  #net-salary {
+        font-size: 3vw !important; 
+        width: 100% ; 
+        text-align: center;        
+        padding: 5px;              
+        box-sizing: border-box;
+            align-items: center;
+        vertical-align: middle;}
+
+    #input1,#input2,#input3 {
+        min-width:90%;
+text-align: center;
+}
 .input-group{text-align: center;}
 }
 
