@@ -1,8 +1,8 @@
 // تعريف البيانات في مصفوفة لتسهيل التكرار عليها
 const configs = [
-    { id: '1', max: 31, error: '.day-error', priceId: 'price-day', displayId: 'basic-salary' },
-    { id: '2', max: 72, error: '.time-error', priceId: 'price-time', displayId: 'valu-time' },
-    { id: '3', max: 5,  error: '.trip-error', priceId: 'price-trip', displayId: 'value-trip' },
+    { id: '1', max:31, error: '.day-error', priceId: 'price-day', displayId: 'basic-salary' },
+    { id: '2', max:72, error: '.time-error', priceId: 'price-time', displayId: 'valu-time' },
+    { id: '3', max:5,  error: '.trip-error', priceId: 'price-trip', displayId: 'value-trip' },
 ];
 const employaeeData = [
     {id:1 , name: "علي عبد العزيز محمود", jop: "محاسب", department: "حسابات كرامة"},
