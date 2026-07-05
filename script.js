@@ -1,14 +1,8 @@
 // تعريف البيانات في مصفوفة لتسهيل التكرار عليها
 const configs = [
-<<<<<<< HEAD
     { id: '1', max: 31, error: '.day-error', priceId: 'price-day', displayId: 'basic-salary' },
     { id: '2', max: 72, error: '.time-error', priceId: 'price-time', displayId: 'valu-time' },
     { id: '3', max: 5, error: '.trip-error', priceId: 'price-trip', displayId: 'value-trip' },
-=======
-    { id: '1', max:31, error: '.day-error', priceId: 'price-day', displayId: 'basic-salary' },
-    { id: '2', max:72, error: '.time-error', priceId: 'price-time', displayId: 'valu-time' },
-    { id: '3', max:5,  error: '.trip-error', priceId: 'price-trip', displayId: 'value-trip' },
->>>>>>> ee61aa1734c57c8fbcb6399d02c7b56d1f5b74d3
 ];
 
 // بدل مقطوع: مبلغ ثابت شهري لموظفي الإدارة (لا يتغير مع الأيام أو الساعات)
