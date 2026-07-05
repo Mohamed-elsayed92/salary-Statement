@@ -1,127 +1,170 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>كشف راتب - نموذج</title>
-    
     <link href="style.css" rel="stylesheet">
-    
-  </head>
-  <body>
-    <div class="paper hand">
-      <h1 class="title">شركة السعد للتجارة والتوريد </h1>
-      <div style="text-align:center; margin-top:6px; font-size:16px"> مفردات الراتب الشهري لموظفين بتعاقد يومي</div>
-      <div class="header-container">
-  <div class="footer-row">
-    <div  class="muted">شهر: ____________<div id="month-name"></div></div>
-    <div  class="muted">السنة: ____________<div id="year-number"></div></div>
-  </div>
-  <div class="fields-wrapper">
-    
-    <div class="input-group">
-      <span class="label">رقم الوظيفي:</span>
-      <div class="field"><input type="number" id="employeeIdInput" class="form-control"style="border: none; outline: none;" placeholder="اكتب الكود التعريفي للموظف..."></div>
-    </div>
-      <div class="input-group">
-        <span class="label">اسم الموظف:</span>
-        <div class="emp-name field">اسم الموظف</div>
-      </div>
-    <div class="input-group">
-      <span class="label">الوظيفة:</span>
-      <div class="emp-job field">الوظيفة</div>
+</head>
+
+<body>
+    <div class="sheet">
+
+        <!-- الهيدر -->
+        <header class="head">
+            <h1>شركة الطلب للتجارة والتوريد</h1>
+            <p>مفردات الراتب الشهري لموظفي التعاقد اليومي (أكثر من 10 سنوات خبرة)</p>
+            <span class="doc-tag">كشف راتب</span>
+            <p class="doc-tag">غرض النموذج مساعدة الزملاء وهو غير رسمي</p>
+        </header>
+
+        <!-- الفترة وبيانات الموظف -->
+        <section class="period">
+            <div class="period-selectors">
+                <span class="period-item">الشهر: <strong id="month-name">جاري التحميل...</strong></span>
+                <span class="period-item">السنة: <strong id="year-number">جاري التحميل...</strong></span>
+            </div>
+
+            <div class="emp-info">
+                <div class="field-group">
+                    <span class="lbl">الرقم الوظيفي</span>
+                    <input type="number" id="employeeIdInput" placeholder="كود الموظف">
+                </div>
+                <div class="field-group">
+                    <span class="lbl">اسم الموظف</span>
+                    <div class="value-display emp-name">-----</div>
+                </div>
+                <div class="field-group">
+                    <span class="lbl">الوظيفة</span>
+                    <div class="value-display emp-job">-----</div>
+                </div>
+                <div class="field-group">
+                    <span class="lbl">القسم</span>
+                    <div class="value-display emp-dept">-----</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- عدادات الأيام / الساعات / الترحلات -->
+        <section class="counters">
+            <div class="counter-box">
+                <div class="top">
+                    <span class="lbl">عدد الأيام</span>
+                    <span class="price">حد أقصى 31</span>
+                </div>
+                <input type="number" id="input1" min="0" max="31" placeholder="0">
+                <div class="err day-error">تخطيت الحد المسموح (31 يوم)</div>
+            </div>
+
+            <div class="counter-box">
+                <div class="top">
+                    <span class="lbl">عدد ساعات العمل الإضافي</span>
+                    <span class="price">حد أقصى 72</span>
+                </div>
+                <input type="number" id="input2" min="0" max="72" placeholder="0">
+                <div class="err time-error">تخطيت الحد المسموح (72 ساعة)</div>
+            </div>
+
+            <div class="counter-box">
+                <div class="top">
+                    <span class="lbl">عدد الرحلات</span>
+                    <span class="price">حد أقصى 5</span>
+                </div>
+                <input type="number" id="input3" min="0" max="5" placeholder="0">
+                <div class="err trip-error">تخطيت الحد المسموح (5 رحلات)</div>
+            </div>
+        </section>
+
+        <!-- الأسعار الثابتة (تُقرأ كنص بواسطة السكربت) -->
+        <section class="rates">
+            <div class="rate-pill">
+                <span class="lbl">قيمة أجر اليوم</span>
+                <output id="price-day">805.94</output>
+            </div>
+            <div class="rate-pill">
+                <span class="lbl">قيمة الساعة الإضافية</span>
+                <output id="price-time">67.161</output>
+            </div>
+            <div class="rate-pill">
+                <span class="lbl">قيمة الرحلة</span>
+                <output id="price-trip">150</output>
+            </div>
+            <div class="rate-pill">
+                <span class="lbl">إجمالي المستحقات</span>
+                <output id="total-salary">0.00</output>
+            </div>
+            <div class="rate-pill">
+                <span class="lbl">إجمالي الاستقطاعات</span>
+                <output id="total-deductions2">0.00</output>
+            </div>
+        </section>
+
+        <!-- جداول المستحقات والاستقطاعات -->
+        <section class="tables">
+
+            <!-- المستحقات -->
+            <div class="card earn">
+                <div class="cardhead">بيان المستحقات</div>
+                <div class="card-body">
+                    <div class="rowline">
+                        <div class="name">الراتب الأساسي<small>عدد الأيام × قيمة اليوم</small></div>
+                        <output id="basic-salary">0.00</output>
+                    </div>
+                    <div class="rowline">
+                        <div class="name">الساعات الإضافية<small>عدد الساعات × قيمة الساعة</small></div>
+                        <output id="valu-time">0.00</output>
+                    </div>
+                    <div class="rowline">
+                        <div class="name">بدل السفر<small>عدد الرحلات × قيمة الرحلة</small></div>
+                        <output id="value-trip">0.00</output>
+                    </div>
+                    <div class="rowline">
+                        <div class="name">بدل مقطوع<small>مبلغ ثابت للإداري</small></div>
+                        <output id="fixed-allowance">300.00</output>
+                    </div>
+                </div>
+                <div class="cardtotal">
+                    <span>إجمالي المستحقات</span>
+                    <output class="total-cell" id="total-amount">0.00</output>
+                </div>
+            </div>
+
+            <!-- الاستقطاعات -->
+            <div class="card ded">
+                <div class="cardhead">الاستقطاعات</div>
+                <div class="card-body">
+                    <div class="rowline insurance-row">
+                        <div class="name">التأمينات</div>
+                        <output id="insurance-value">0.00</output>
+                    </div>
+                    <div class="rowline taxes-row">
+                        <div class="name">الضرائب</div>
+                        <output id="tax-value">0.00</output>
+                    </div>
+                    <div class="rowline">
+                        <div class="name">خصومات صندوق تكريم الشهداء</div>
+                        <output id="other-deductions">0.00</output>
+                    </div>
+                </div>
+                <div class="cardtotal">
+                    <span>إجمالي الاستقطاعات</span>
+                    <output class="total-cell" id="total-deductions">0.00</output>
+                </div>
+            </div>
+        </section>
+
+        <!-- صافي الراتب -->
+        <div class="net-box">
+            <span class="lbl">صافي الراتب</span>
+            <div class="amount">
+                <span class="val" id="net-salary">0.00</span>
+                <span class="unit">جنيه مصري</span>
+            </div>
+        </div>
     </div>
 
-    <div class="input-group">
-      <span class="label">القسم:</span>
-      <div class="emp-dept field">القسم</div>
-    </div>
-  </div>
-  
-</div>
-<div class="contener-table">
-  <table class="form-table">
-  <caption>تفاصيل الراتب</caption>
-  <tr>
-    <th class="wide">بـيـان المستحقات</th>
-    <th class="narrow">القيمة</th>
-    <th class="narrow">الاستقطاعات</th>
-    <th class="narrow">القيمة</th>
-    
-    
-  </tr>
-  <tr>
-    <td style="text-align:center; ">- الراتب الأساسي</td>
-     <td id="basic-salary"></td>
-   
-    <td style="text-align:center; padding:0px">- التأمينات</td>
-    <td id="insurance-value"></td>
-    
-</tr>
- <tr>
-    <td style="text-align:center; padding:0px">- الساعات الاضافية</td>
-     <td id="valu-time"></td>
-       <td style="text-align:center; padding:0px">- الضرائب</td>
-    <td id="tax-value"></td>
-    
- </tr>
- <tr>
-    <td style="text-align:center; padding:0px">- بدل السفر</td>
-     <td id="value-trip"></td>
-  <td style="text-align:center; padding:5px">- خصومات لصالح صندوق تكريم الشهداء</td>
-    <td id="other-deductions"></td>
-
- </tr>
- 
- <tr>
-   <td style="text-align:center; padding:5px">إجمالي المستحقات</td>
-    <td id="total-salary"></td>
-    <td style="text-align:center; padding:5px">إجمالي الاستقطاعات</td>
-    <td id="total-deductions"></td>
-    
-  </tr>
- 
-</div>
-    </table>
-    <div  style="display:flex; gap:10px;flex-direction: row;margin-top: 10px;">
-           <div class="input-group">
-        <span class="labe2">عدد الايام:</span>
-        <input id="input1" type="number" placeholder="0">
-        <span class="day-error">تخطيت المسموح بها 20 يوم</span>
-      </div>  
-            <div class="input-group">
-        <span class="labe2">عدد الساعات الاضافية:</span>
-       <input id="input2" type="number" placeholder="0">
-       <span class="time-error"> تخطيت المسموح بها 55 ساعة</span> 
-      </div>
-            <div class="input-group">
-        <span class="labe2">عدد التربات:</span>
-        <input id="input3" type="number" placeholder="0">
-        <span class="trip-error"> تخطيت المسموح بها 5 تربات</span> 
-    
-      </div></div>
-    
-    <div style="display:flex;gap:16px; align-items:end;margin-top:20px">
-      <table class="form-table2" >
-        <tr><th>قيمة اجر اليوم</th><td id="price-day">200</td></tr>
-        <tr><th>قيمة اجر الساعة الاضافي</th><td id="price-time">20</td></tr>
-          <tr><th>قيمة الرحلة/الترب</th><td id="price-trip">100</td></tr>
-          <tr><th>مجموع الاستحقاقات</th><td id="total-amount">0.00</td></tr>
-          <tr><th>مجموع الاستقطاعات</th><td id="total-deductions2">0.00</td></tr>
-        </table>
-      
-        <div class="right-box">صافي الراتب<br><span id="net-salary"style="font-size:26px; display:block; margin-top:10px">0.00</span></div>
-      
-  
-    </div>
-
-    <div class="signature">
-      <div class="sig-box-top">توقيع الموظف</div>
-      <div class="sig-box">المدير العام</div>
-    </div>
-
-    
-  </div>
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
