@@ -180,13 +180,8 @@ function updateUI() {
 // ربط الحدث بجميع المدخلات
 configs.forEach(conf => {
     const input = document.getElementById(`input${conf.id}`);
-<<<<<<< HEAD
     if (input) input.addEventListener('input', updateUI);
 });
 
 // تشغيل الحساب مرة واحدة عند تحميل الصفحة (لعرض بدل المقطوع الثابت فوراً)
 updateUI();
-=======
- if(input) input.addEventListener('input', updateUI);
-});
->>>>>>> ee61aa1734c57c8fbcb6399d02c7b56d1f5b74d3
