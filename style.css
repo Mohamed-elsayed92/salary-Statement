@@ -258,7 +258,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 8px;
+    gap: 5px;
     flex: 1;
     min-width: 160px;
     background: var(--gold-tint);
@@ -279,23 +279,50 @@ button {
     color: #8A6416;
 }
 
+.total-pills-row {
+    flex: 0 0 100%;
+    /* إجبار العنصر على أخذ 100% من العرض */
+    display: flex;
+    justify-content: space-between;
+    /* لتوزيع النص والقيمة بشكل جمالي */
+}
+
+
+/* تنسيق إضافي اختياري لتمييز خانة إجمالي المستحقات (فوق الاستقطاعات) */
+
+.earnings {
+    margin-top: 15px;
+    /* مسافة تفصلها عن السطر العلوي */
+    background-color: #fff9e6;
+    /* لون خلفية خفيف ليتماشى مع لون التصميم الأصفر */
+    border: 1px solid #f3d99d;
+}
+
 
 /* ===== Salary tables ===== */
 
 .tables {
     padding: 22px 32px 4px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: 1fr 1fr;
     gap: 18px;
+    width: 100%;
+    direction: rtl;
+    align-items: stretch;
 }
 
 .card {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
+    flex: 1;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* بدل space-between */
     border-radius: 12px;
     border: 1px solid var(--line);
-    overflow: hidden;
     margin-bottom: 10px;
+    overflow: hidden;
 }
 
 .card-body {
@@ -304,7 +331,24 @@ button {
 }
 
 .card-body .rowline {
-    flex: 1;
+    flex: none;
+    /* شيلنا flex:1 عشان ما يعملش تمدد غير متساوي */
+    min-height: 65px;
+}
+
+.placeholder-row {
+    border-top: 1px solid var(--line);
+    height: 74px;
+}
+
+.cardtotal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    font-weight: 800;
+    font-size: 14.5px;
+    border-top: 2px solid var(--line);
 }
 
 .card .cardhead {
@@ -328,15 +372,18 @@ button {
     justify-content: space-between;
     padding: 10px 14px;
     border-top: 1px solid var(--line);
+    box-sizing: border-box;
+    height: 74px;
     background: #fff;
     gap: 10px;
+    overflow: hidden;
 }
 
-.earn .rowline:nth-of-type(even) {
+.earn .rowline:nth-of-type(odd) {
     background: var(--teal-tint);
 }
 
-.ded .rowline:nth-of-type(even) {
+.ded .rowline:nth-of-type(odd) {
     background: var(--red-tint);
 }
 
@@ -361,16 +408,6 @@ button {
     font-size: 14px;
     font-weight: 800;
     padding: 7px 6px;
-}
-
-.cardtotal {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 14px;
-    font-weight: 800;
-    font-size: 14.5px;
-    border-top: 2px solid var(--line);
 }
 
 .cardtotal .total-cell {
@@ -440,9 +477,6 @@ button {
         gap: 10px;
         text-align: center;
     }
-}
-
-@media screen and (max-width: 575px) {
     body {
         padding: 16px 8px 40px;
     }
